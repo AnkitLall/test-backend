@@ -5,6 +5,7 @@ import colors from "colors";
 import morgan from "morgan";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
+import cors from 'cors'; 
 
 import fooditemRoutes from "./routes/fooditemRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/fooditems", fooditemRoutes);
 app.use("/api/users", userRoutes);
